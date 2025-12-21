@@ -2,15 +2,13 @@ class Solution {
 public:
     int numberOfSteps(int num) {
         int steps = 0;
-        int n = num;
-        while(n>0){
-            if(n%2==0){
-                n = n/2;
-                steps++;
+        while(num>0){
+            if(num%2==0){
+                num = num/2;
             }else{
-                n = n - 1;
-                steps++;
+                num = num - 1;
             }
+            steps++;
         }
         return steps;
     }
