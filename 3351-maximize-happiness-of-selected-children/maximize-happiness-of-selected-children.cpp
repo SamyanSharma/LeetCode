@@ -5,9 +5,7 @@ public:
         int turns = 0;
         sort(happiness.begin(), happiness.end(), greater<int>());
         for(int i=0; i<k; i++){
-            if(happiness[i]>turns){
-                sum += happiness[i] - turns;
-            }
+            sum+= max(happiness[i] - turns, 0);
             turns++;
         }
         return sum;
