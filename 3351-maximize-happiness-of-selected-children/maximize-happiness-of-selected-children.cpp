@@ -1,14 +1,13 @@
 class Solution {
 public:
     long long maximumHappinessSum(vector<int>& happiness, int k) {
-        int n = happiness.size();
         long long sum = 0;
         int turns = 0;
-        sort(happiness.begin(), happiness.end());
-        for(int i=1; i<=k; i++){
-            if(happiness[n-i]>turns){
-                cout << happiness[n-i] << endl;
-                sum += happiness[n-i] - turns;
+        sort(happiness.begin(), happiness.end(), greater<int>());
+        for(int i=0; i<k; i++){
+            if(happiness[i]>turns){
+                cout << happiness[i] << endl;
+                sum += happiness[i] - turns;
             }
             turns++;
         }
