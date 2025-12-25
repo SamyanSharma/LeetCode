@@ -6,7 +6,6 @@ public:
         sort(happiness.begin(), happiness.end(), greater<int>());
         for(int i=0; i<k; i++){
             if(happiness[i]>turns){
-                cout << happiness[i] << endl;
                 sum += happiness[i] - turns;
             }
             turns++;
