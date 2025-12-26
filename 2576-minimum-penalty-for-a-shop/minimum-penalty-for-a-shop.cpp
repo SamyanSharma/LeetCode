@@ -1,22 +1,21 @@
 class Solution {
 public:
     int bestClosingTime(string customers) {
-        int minPenalty = 0;
-        int currPenalty = 0;
-        int earliestHour = 0;
-        int n = customers.size();
-        for (int i = 0; i < n; i++){
-            char ch = customers[i];
-            if(ch == 'Y'){
-                currPenalty--;
-            }else{
-                currPenalty++;
+        int maxScore = 0;
+        int score = 0;
+        int bestHour = 0;
+        for(int i = 0, n = customers.size(); i < n; i++){
+            if(customers[i] == 'Y'){
+                score += 1;
             }
-            if(currPenalty < minPenalty){
-                earliestHour = i + 1;
-                minPenalty = currPenalty;
+            else{
+                score -= 1;
+            }
+            if(score > maxScore){
+                maxScore = score;
+                bestHour = i + 1;
             }
         }
-        return earliestHour;
+        return bestHour;
     }
 };
