@@ -12,10 +12,11 @@ public:
         int n = s.length();
         int total = 0;
         for(int i = 0 ; i < n; i++){
-            if(i < n - 1 && value[s[i+1]]>value[s[i]]){
-                total -= value[s[i]];
+            int current = value[s[i]];
+            if(i < n - 1 && value[s[i+1]]>current){
+                total -= current;
             }else{
-                total += value[s[i]];
+                total += current;
             }
         }
         return total;
