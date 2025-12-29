@@ -9,11 +9,10 @@ public:
         value['C'] = 100;
         value['D'] = 500;
         value['M'] = 1000;
-        int n = s.length();
         int total = 0;
-        for(int i = 0 ; i < n; i++){
+        for(int i = 0 ; i < s.length(); i++){
             int current = value[s[i]];
-            if(i < n - 1 && value[s[i+1]]>current){
+            if(value[s[i+1]]>current){
                 total -= current;
             }else{
                 total += current;
