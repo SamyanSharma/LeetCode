@@ -1,22 +1,23 @@
 class Solution {
 public:
     long long maxMatrixSum(vector<vector<int>>& matrix) {
-        long long totalSum = 0;
+        long long sum = 0;
+        int count = 0;
+        int n = matrix.size();
+        int m = matrix[0].size();
         int minVal = INT_MAX;
-        int negativeCount = 0;
-
-        for (auto& row : matrix){
-            for (int val : row){
-                totalSum += abs(val);
-                if (val < 0){
-                    negativeCount++;
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < m; j++){
+                if (matrix[i][j] < 0){
+                    count++;
                 }
-                minVal = min(minVal, abs(val));
+                minVal = min(minVal, abs(matrix[i][j]));
+                sum += abs(matrix[i][j]);
             }
         }
-        if (negativeCount % 2 != 0){
-            totalSum -= 2 * minVal;
+        if (count % 2 == 1){
+            sum -= 2 * minVal; // Since its already added once
         }
-        return totalSum;
+        return sum;
     }
 };
