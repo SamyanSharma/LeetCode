@@ -1,24 +1,41 @@
 class MyStack {
-    private Deque<Integer> queue;
+    private Queue<Integer> q1;
+    private Queue<Integer> q2;
 
     public MyStack() {
-        this.queue = new ArrayDeque<>();
+        this.q1 = new ArrayDeque<>();
+        this.q2 = new ArrayDeque<>();
     }
     
     public void push(int x) {
-        this.queue.addFirst(x);
+        q1.add(x);
     }
     
     public int pop() {
-        return this.queue.removeFirst();
+        while(q1.size() > 1){
+            q2.add(q1.poll());
+        }
+        int poppedVal = q1.poll();
+        Queue<Integer> temp = q1;
+        q1 = q2;
+        q2 = temp;
+        return poppedVal;
     }
     
     public int top() {
-        return this.queue.peek();
+        while(q1.size() > 1){
+            q2.add(q1.poll());
+        }
+        int topVal = q1.peek();
+        q2.add(q1.poll());
+        Queue<Integer> temp = q1;
+        q1 = q2;
+        q2 = temp;
+        return topVal;
     }
     
     public boolean empty() {
-        return this.queue.size() == 0;
+        return q1.isEmpty();    
     }
 }
 
